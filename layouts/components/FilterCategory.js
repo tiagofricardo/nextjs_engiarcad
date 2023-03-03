@@ -22,6 +22,7 @@ function FilterCategory({
     <ul className="list-filter ">
       {filterCategory.map((filter) => (
         <li
+          key={filter.id}
           className={`list-filter-link ${
             filter.id === activeCategory ? "list-filter-link-active" : ""
           }`}
