@@ -76,7 +76,7 @@ const Home = ({ frontmatter }) => {
       <div className=" relative flex flex-col items-center overflow-x-hidden  shadow ">
         <div className=" whitespace-nowrappy-12  flex animate-slider1	items-center justify-center py-10 opacity-50 grayscale">
           {clients.client.map((client) => (
-            <div className=" mx-[15px] md:mx-[40px]  ">
+            <div className=" mx-[15px] md:mx-[40px] " key={client.name}>
               <Image
                 src={client.image}
                 width={client.width}
@@ -88,7 +88,7 @@ const Home = ({ frontmatter }) => {
 
         <div class=" absolute top-0 flex animate-slider2 items-center justify-center	whitespace-nowrap py-10 opacity-50 grayscale">
           {clients.client.map((client) => (
-            <div className="mx-[15px] md:mx-[40px]  ">
+            <div className="mx-[15px] md:mx-[40px]  " key={client.name}>
               <Image
                 src={client.image}
                 width={client.width}
@@ -158,7 +158,7 @@ const Home = ({ frontmatter }) => {
                   <h2 className="font-bold leading-[40px]">{service?.title}</h2>
                   <ul className="list-circles mt-4">
                     {service?.itens.map((item) => (
-                      <li>{item}</li>
+                      <li key={item}>{item}</li>
                     ))}
                   </ul>
 
