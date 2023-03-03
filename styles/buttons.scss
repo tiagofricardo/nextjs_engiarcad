@@ -1,0 +1,100 @@
+.btn {
+  @apply inline-block border px-7 py-[17px] font-primary font-bold leading-[18px] transition;
+}
+
+.btn-primary {
+  @apply relative z-[1] rounded-[30px] border-transparent  bg-primary text-white transition-all hover:shadow-[0_12px_24px_-6px_rgba(45,67,121,.1)];
+
+  &:after {
+    @apply absolute left-1/2 top-1/2 -z-[1] h-full w-full translate-x-[-50%]  translate-y-[-50%] rounded-[30px] bg-primary transition-all duration-300 ease-in-out content-[''];
+  }
+  &:hover::after {
+    @apply h-[110%] w-[110%];
+  }
+}
+
+.btn-outline-primary {
+  @apply relative rounded-[30px] border-0 bg-transparent text-text hover:border-transparent hover:text-primary;
+
+  &:after {
+    @apply absolute left-1/2 top-1/2 z-[0] h-full w-full translate-x-[-50%]  translate-y-[-50%] rounded-[30px] border border-primary bg-transparent transition-all duration-300 ease-in-out content-[''];
+  }
+  &:hover::after {
+    @apply h-[110%] w-[110%];
+  }
+}
+
+.btn-home {
+  @apply relative	 inline-block p-[32px] font-bold tracking-[1px] text-primary;
+  &__circle,
+  &__text,
+  &__white-circle {
+    @apply absolute;
+  }
+  &__circle {
+    @apply top-0 left-0 h-full w-full rounded-full shadow-[0_0_1px_1px_rgba(206,123,0,1)] duration-300 ease-linear;
+  }
+  &__white-circle {
+    @apply top-[50%] left-[50%] flex h-[56px] w-[56px] translate-x-[-50%] translate-y-[-50%] scale-0 rounded-full bg-primary duration-300 ease-in-out;
+
+    svg {
+      @apply m-auto h-[24px] w-[24px] fill-white;
+    }
+  }
+
+  &__text {
+    @apply top-[50%] z-[2] translate-y-[-50%] whitespace-nowrap px-[15px] py-[24px] text-lg duration-300 ease-linear;
+  }
+
+  &:hover {
+    .btn-home__circle {
+      @apply scale-0;
+    }
+
+    .btn-home__white-circle {
+      @apply translate-x-[-50%] translate-y-[-50%] scale-100;
+    }
+
+    .btn-home__text {
+      @apply translate-x-[20%] translate-y-[-50%];
+    }
+  }
+}
+
+.btn-slide {
+  @apply relative inline-block cursor-pointer border-none bg-transparent p-0 align-middle no-underline outline-0;
+}
+
+.btn-slide.learn-more {
+  @apply h-auto min-w-[200px];
+}
+
+.btn-slide.learn-more .circle {
+  @apply relative m-0 block h-12 w-12 rounded-full bg-secondary transition-all duration-500 ease-[cubic-bezier(0.65,0,0.076,1)];
+}
+.btn-slide.learn-more .circle .icon {
+  @apply absolute top-0 bottom-0 m-auto bg-secondary transition-all duration-500 ease-[cubic-bezier(0.65,0,0.076,1)];
+}
+.btn-slide.learn-more .circle .icon.arrow {
+  @apply left-[0.625rem] h-[0.125rem] w-4 bg-transparent transition-all duration-500 ease-[cubic-bezier(0.65,0,0.076,1)];
+}
+
+.btn-slide.learn-more .circle .icon.arrow::before {
+  @apply absolute right-[0.0625rem] top-[-0.25rem] h-2	 w-2	rotate-45 border-t-[0.125rem] border-r-[0.125rem] border-solid border-white content-[''];
+}
+
+.btn-slide.learn-more .button-text {
+  @apply absolute top-0 left-0 right-0 bottom-0 ml-[1.85rem] pt-[0.75rem] text-center	 font-primary font-bold uppercase leading-relaxed transition-all duration-500 ease-[cubic-bezier(0.65,0,0.076,1)];
+}
+
+.btn-slide:hover .circle {
+  @apply w-full;
+}
+
+.btn-slide:hover .circle .icon.arrow {
+  @apply translate-x-4 bg-white;
+}
+
+.btn-slide:hover .button-text {
+  @apply text-white;
+}

@@ -1,0 +1,30 @@
+.header {
+  @apply bg-white py-[14px] px-4 md:px-0 md:py-[9px];
+}
+
+.nav-bar {
+  @apply mt-4 flex flex-col md:mt-0 md:flex-row md:space-x-8 md:text-sm md:font-medium;
+}
+.nav-link {
+  @apply block border-b border-gray-100 py-2 pl-3 pr-4 text-base text-gray-700 duration-500 hover:bg-gray-50 md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-primary;
+
+  &-active {
+    @apply font-bold text-primary;
+  }
+}
+
+.nav-dropdown-link {
+  @apply flex w-full items-center justify-between border-b border-gray-100 py-2 pl-3 pr-4 text-base text-gray-700 hover:bg-gray-50 md:w-auto md:border-0 md:p-0 md:hover:bg-transparent md:hover:text-primary;
+
+  &-active {
+    @apply font-bold text-primary;
+  }
+}
+
+.nav-dropdown-list {
+  @apply z-10 my-4 hidden list-none divide-y divide-gray-100 rounded-lg border-transparent bg-white text-base shadow transition-all duration-300 group-hover:block md:invisible md:absolute md:top-[10px] md:block md:p-0 md:opacity-0 md:group-hover:visible md:group-hover:top-[55px] md:group-hover:opacity-100;
+}
+
+.nav-dropdown-list-link {
+  @apply block px-4 py-2 text-sm font-bold text-gray-700 hover:rounded-lg hover:bg-theme-light;
+}
