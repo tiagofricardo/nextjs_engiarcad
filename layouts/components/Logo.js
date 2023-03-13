@@ -22,7 +22,7 @@ const Logo = ({ src }) => {
           height={logo_height.replace("px", "") * 2}
           src={src ? src : logo}
           alt={title}
-          priority
+          priority={true}
         />
       ) : logo_text ? (
         logo_text

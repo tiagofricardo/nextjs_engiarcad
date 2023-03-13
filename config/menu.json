@@ -4,47 +4,18 @@
       "name": "Home",
       "url": "/"
     },
+
     {
-      "name": "Serviços",
-      "url": "/blogs",
-      "hasChildren": "true",
-      "children": [
-        {
-          "text": "outro teste",
-          "url": "/outroteste"
-        }
-      ]
-    },
-    {
-      "name": "Pricing",
-      "url": "/pricing"
-    },
-    {
-      "name": "Contact",
-      "url": "/contact"
-    },
-    {
-      "name": "teste",
-      "url": "/teste",
-      "hasChildren": "true",
-      "children": [
-        {
-          "text": "outro teste",
-          "url": "/pricing"
-        },
-        {
-          "text": "outro outro teste",
-          "url": "/pricing"
-        }
-      ]
+      "name": "Portfolio",
+      "url": "/portfolio"
     },
     {
       "name": "Clientes",
       "url": "/clients"
     },
     {
-      "name": "FAQ",
-      "url": "/faq"
+      "name": "Contacto",
+      "url": "/contact"
     }
   ],
 
@@ -80,7 +51,7 @@
       ]
     },
     {
-      "name": "Support",
+      "name": "Contactos",
       "menu": [
         {
           "text": "FAQ",
@@ -95,6 +66,29 @@
           "url": "#"
         }
       ]
+    }
+  ],
+
+  "outro": [
+    {
+      "name": "teste",
+      "url": "/teste",
+      "hasChildren": "true",
+      "children": [
+        {
+          "text": "outro teste",
+          "url": "/pricing"
+        },
+        {
+          "text": "outro outro teste",
+          "url": "/pricing"
+        }
+      ]
+    },
+
+    {
+      "name": "FAQ",
+      "url": "/faq"
     }
   ]
 }

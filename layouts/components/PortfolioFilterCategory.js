@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-function FilterCategory({
+function PortfolioFilterCategory({
   filterCategory,
   categories,
   setFiltered,
@@ -26,7 +26,6 @@ function FilterCategory({
           className={`list-filter-link ${
             filter.id === activeCategory ? "list-filter-link-active" : ""
           }`}
-          href={"/"}
           onClick={() => {
             setActiveCategory(filter.id);
           }}
@@ -38,4 +37,4 @@ function FilterCategory({
   );
 }
 
-export default FilterCategory;
+export default PortfolioFilterCategory;

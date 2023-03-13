@@ -1,6 +1,6 @@
 ---
 title: "Portfolio"
-description: "this is meta description"
+description: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Cumque praesentium nisi officiis maiores quia sapiente totam omnis vel sequi corporis ipsa incidunt reprehenderit recusandae maxime perspiciatis iste placeat architecto, mollitia delectus ut ab quibusdam. Magnam cumque numquam tempore reprehenderit illo"
 
 filtercategories:
   - id: "cat1"
@@ -26,7 +26,7 @@ categories:
     filterId: "cat2"
     smallDescription: "Urbanismo"
     description: "Habitação e Turismo"
-    image: "/images/projects/urbanismo-.jpg"
+    image: "/images/projects/palacete-centenario/urbanismo-levantamento1-1.jpg"
 
   - id: "industriaisarmazens"
     filterId: "cat2"

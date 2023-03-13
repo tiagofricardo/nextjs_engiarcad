@@ -1,91 +1,76 @@
-import React, { useState, useMemo, useEffect } from "react";
-import FilterCategory from "./FilterCategory";
-import PortfolioCategory from "./PortfolioCategory";
-import { motion, AnimatePresence } from "framer-motion";
+import PhotoAlbum from "react-photo-album";
+import Lightbox from "yet-another-react-lightbox";
+import "yet-another-react-lightbox/styles.css";
+import { useState } from "react";
+import Image from "next/image";
 
-const categoryPortfolio = [
-  {
-    id: 1,
-    number: "1",
-    name: "Habitação e Turismo",
-    categoryId: "cat2",
-    categoryName: "Urbanismo",
-  },
+const PhotoGallery = ({ projectData, imagesData }) => {
+  const [index, setIndex] = useState(-1);
 
-  {
-    id: 3,
-    number: "3",
-    name: "Instalações comerciais e sociais",
-    categoryId: "cat2",
-    categoryName: "Urbanismo",
-  },
-  {
-    id: 4,
-    number: "4",
-    name: "Rodovia",
-    categoryId: "cat3",
-    categoryName: "Postos de combustíveis",
-  },
-  {
-    id: 2,
-    number: "2",
-    name: "Instalações industriais e armazéns",
-    categoryId: "cat2",
-    categoryName: "Urbanismo",
-  },
-  {
-    id: 5,
-    number: "5",
-    name: "Marinha",
-    categoryId: "cat3",
-    categoryName: "Postos de combustíveis",
-  },
-  {
-    id: 6,
-    number: "6",
-    name: "Aviação",
-    categoryId: "cat3",
-    categoryName: "Postos de combustíveis",
-  },
-  {
-    id: 7,
-    number: "7",
-    name: "Reservatórios",
-    categoryId: "cat5",
-    categoryName: "Equipamentos",
-  },
-  {
-    id: 8,
-    number: "8",
-    name: "Instalações comerciais e sociais",
-    categoryId: "cat5",
-    categoryName: "Equipamentos",
-  },
-];
+  const photos = imagesData.map((image, index) => {
+    return {
+      title: `${projectData.id}-photo${index}`,
+      src: image.url,
+      width: image.width,
+      height: image.height,
+      key: index + 1,
+      alt: `${projectData.id}-photo${index}`,
+    };
+  });
 
-function Gallery({ filterCategories, categories }) {
-  const [filtered, setFiltered] = useState([]);
-  const [activeCategory, setActiveCategory] = useState("cat1");
+  const slides = photos.map(({ src, key, width, height }) => ({
+    src,
+    key,
+    width,
+    height,
+  }));
+
+  function NextJsImage(image, offset, rect) {
+    const width = Math.round(
+      Math.min(rect.width, (rect.height / image.height) * image.width)
+    );
+    const height = Math.round(
+      Math.min(rect.height, (rect.width / image.width) * image.height)
+    );
+
+    return (
+      <div style={{ position: "relative", width, height }}>
+        <Image
+          fill
+          alt={projectData.id + "-" + image.key}
+          key={image.key}
+          src={image}
+          loading="lazy"
+          draggable={false}
+          sizes={
+            typeof window !== "undefined"
+              ? `${Math.ceil((width / window.innerWidth) * 100)}vw`
+              : `${width}px`
+          }
+        />
+      </div>
+    );
+  }
 
   return (
-    <div>
-      <FilterCategory
-        filterCategory={filterCategories}
-        categories={categories}
-        setFiltered={setFiltered}
-        activeCategory={activeCategory}
-        setActiveCategory={setActiveCategory}
+    <>
+      <PhotoAlbum
+        layout="columns"
+        photos={photos}
+        targetRowHeight={200}
+        onClick={({ index }) => setIndex(index)}
       />
 
-      <motion.div layout className="gallery">
-        <AnimatePresence>
-          {filtered.map((category) => {
-            return <PortfolioCategory key={category.id} category={category} />;
-          })}
-        </AnimatePresence>
-      </motion.div>
-    </div>
+      <Lightbox
+        open={index >= 0}
+        animation={{ fade: 800 }}
+        index={index}
+        close={() => setIndex(-1)}
+        slides={slides}
+        render={{ slide: NextJsImage }}
+      />
+    </>
   );
-}
+};
 
-export default Gallery;
+export default PhotoGallery;

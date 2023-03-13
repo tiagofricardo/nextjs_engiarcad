@@ -1,5 +1,4 @@
 import { motion } from "framer-motion";
-import Link from "next/link";
 
 function PortfolioCategory({ category }) {
   return (

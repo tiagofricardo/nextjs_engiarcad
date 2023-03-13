@@ -1,16 +1,13 @@
 import { getSinglePage } from "@lib/contentParser";
 import { parseMDX } from "@lib/utils/mdxParser";
-import Base from "@layouts/Baseof";
-import ProjectCategories from "@layouts/ProjectsCategories";
+import ProjectCategory from "@layouts/ProjectCategory";
 
 // post single layout
-const Article = ({ categorie, mdxContent, slug }) => {
-  return (
-    <ProjectCategories frontmatter={categorie.frontmatter}></ProjectCategories>
-  );
+const PortfolioCategory = ({ category }) => {
+  return <ProjectCategory categoryData={category} />;
 };
 
-export default Article;
+export default PortfolioCategory;
 
 // get post single slug
 export const getStaticPaths = () => {
@@ -18,7 +15,7 @@ export const getStaticPaths = () => {
   const allPaths = getAllSlug.map((item) => {
     return {
       params: {
-        prjcat: item.slug.toString(),
+        portfcat: item.slug.toString(),
       },
     };
   });
@@ -30,16 +27,16 @@ export const getStaticPaths = () => {
 
 // get post single content
 export async function getStaticProps({ params }) {
-  const { prjcat } = params;
+  const { portfcat } = params;
   const projectCategories = getSinglePage(`content/portfolio`);
-  const categorieData = projectCategories.find((p) => p.slug == prjcat);
+  const categorieData = projectCategories.find((p) => p.slug == portfcat);
   const mdxContent = await parseMDX(categorieData.content);
 
   return {
     props: {
-      categorie: categorieData,
+      category: categorieData,
       mdxContent: mdxContent,
-      slug: prjcat,
+      slug: portfcat,
     },
   };
 }
